@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #000000, #444444);
+            color: #fff;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 999;
+        }
+        .menu-bar a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        .event {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInAnimation 2s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+        }
+        .event:hover {
+            transform: translateY(-5px);
+        }
+        h1 {
+            text-align: center;
+            color: #f8f6f6;
+            margin-top: 20px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .details {
+            display: none;
+            padding: 10px;
+            background-color: #93a9ae;
+            border-radius: 5px;
+        }
+        .details img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .details p:first-child {
+            margin-top: 0;
+        }
+        .button {
+            background-color: #3498db;
+            border: none;
+            color: rgb(241, 233, 233);
+            padding: 8px 14px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .register-form {
+            display: none;
+        }
+        .message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        /* Feedback Form Styles */
+        .feedbackForm {
+            display: none;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #000;
+        }
+        .feedbackForm h3 {
+            margin-top: 0;
+            color: #333333;
+        }
+        .feedbackForm label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .feedbackForm select,
+        .feedbackForm textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+        }
+        .feedbackForm button {
+            background-color: #3498db;
+            border: none;
+            color: #ffffff;
+            padding: 8px 14px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .feedbackForm button:hover {
+            background-color: #2980b9;
+        }
+        /* Message Div Styles */
+        #message {
+            display: none;
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Bar -->
+    <div class="menu-bar">
+        <a href="about.html">About</a>
+        <a href="select_campus.html">Select Campus</a>
+        <a href="contact_us.html">Contact Us</a>
+    </div>
+    
+    <h1>Events</h1>
+
+    <!-- Existing Events Section -->
+    <h2>Completed events</h2>
+    <div class="event">
+        <button class="button" onclick="toggleDetails('event1')">Show Details</button>
+        <div id="event1" class="details">
+            <img src="C:\Users\harsh\Music\event-1.png" alt="Event 1" width="400" height="300">
+            <h2 style="color: black;">SEMINAR ON OCULAR MUSCLE EXERCISE</h2>
+            <p style="color: black;">Date: 02-02-21</p>
+            <p style="color: black;">Location: CUTM campus, BBSR</p>
+            <p style="color: black;">Resource Person Details- Prof Sunil Kumar Jha (Dean, SoPAHS) and Mr. Ranitava Banerjee (Assistant Professor, Department of Optometry, SoPAHS)</p>
+            <a href="https://centurionuniv.edu.in/event-calender/seminar-on-ocular-muscle-exercise/">More details about this seminar</a>
+            <button class="button" onclick="showFeedbackForm('event1');">Give Feedback</button>
+        </div>
+    </div>
+    <div class="event">
+        <button class="button" onclick="toggleDetails('event2')">Show Details</button>
+        <div id="event2" class="details">
+            <img src="C:\Users\harsh\Music\event-2.png" alt="Event 2" width="400" height="300">
+            <h2 style="color: black;">ONLINE WORKSHOP ON ENTREPRENEURSHIP DEVELOPMENT</h2>
+            <p style="color: black;">Date: From 22/01/2022 to 22/01/2022</p>
+           
+            <p style="color: black;">Location: online</p>
+            <p style="color: black;">Resource Person Details: Dr. Susanta Kumar Mishra, Professor, School of Management, Centurion University of Technology and Management, Odisha</p>
+            <a href="https://centurionuniv.edu.in/event-calender/online-workshop-on-entrepreneurship-development">More details about this workshop</a>
+            <button class="button" onclick="showFeedbackForm('event2');">Give Feedback</button>
+        </div>
+    </div>
+    <div class="event">
+        <button class="button" onclick="toggleDetails('event3')">Show Details</button>
+        <div id="event3" class="details">
+            <img src="C:\Users\harsh\Music\event-3.jpg" alt="Event 3" width="400" height="300">
+            <h2 style="color: black;">BFIN</h2>
+            <p style="color: black;">Date: 4th April to 8th April, 2022</p>
+            <p style="color: black;">Location: Board room, Aryabhatta building</p>
+            <a href="https://centurionuniv.edu.in/event-calender/bfin/">More details about BFIN</a>
+            <button class="button" onclick="showFeedbackForm('event3');">Give Feedback</button>
+        </div>
+    </div>
+    <div class="event">
+        <button class="button" onclick="toggleDetails('event4')">Show Details</button>
+        <div id="event4" class="details">
+            <img src="C:\Users\harsh\OneDrive\Pictures\web banner bbsr.jpg" alt="Event 4" width="400" height="300">
+            <h2 style="color: black;">Gajajyothi</h2>
+            <p style="color: black;">Date: 04-03-24 to 07-03-24</p>
+            <p style="color: black;">Location: CUTM campus, BBSR</p>
+            <a href="https://gajajyoti.cutm.ac.in/">More details for Gajajyothi in BBSR</a>
+            <button class="button" onclick="showFeedbackForm('event4');">Give Feedback</button>
+        </div>
+    </div>
+    <h2>Upcoming events</h2>
+
+    <div class="event">
+        <button class="button" onclick="toggleDetails('event5');">Show Details</button>
+        <div id="event5" class="details">
+            <div class="event">
+                <img src="path_to_image" alt="Event 5" width="400" height="300">
+                <h2 style="color: black;">Upcoming Event 1</h2>
+                <p style="color: black;">Date: TBD</p>
+                <p style="color: black;">Location: TBD</p>
+                <a href="#" class="button" onclick="toggleDetails('registerForm5')">Register Now</a>
+            </div>
+        </div>
+    </div>
+    
+            
+    
+            <div id="registerForm5" class="register-form">
+                <h3>Event 5 Registration Form</h3>
+                <!-- Paste your Google Form embed code here -->
+                <!-- Replace 'YOUR_EMBED_CODE_HERE' with the actual embed code from Google Forms -->
+                <iframe src="https://docs.google.com/forms/d/19Xc7h1I4qkvwDuQkPeM26op1yz_1E9sYHz4rCgUeZnw/edit?pli=1" width="640" height="847" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></div>
+    <!-- Feedback Form Template (Hidden) -->
+    <div id="feedbackFormTemplate" style="display: none;">
+        <h3>Event Feedback</h3>
+        <form onsubmit="submitFeedback(event)">
+            <label for="rating">Rating:</label>
+            <select name="rating">
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+            <br>
+            <label for="comment">Comment (Max 50 characters):</label>
+            <textarea name="comment" maxlength="50"></textarea>
+            <br>
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+
+    <!-- Message div -->
+    <div id="message" class="message" style="display:none;"></div>
+    <div id="message" class="message">
+        Submitted successfully!
+    </div>
+    <div><form action="events_bbsr.php" method="post"></form></div>
+    <script>
+        // Function to toggle details visibility
+        function toggleDetails(eventId) {
+            var details = document.getElementById(eventId);
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Function to show feedback form for a specific event
+        function showFeedbackForm(eventId) {
+            // Remove any existing feedback forms
+            var existingForms = document.querySelectorAll('.feedbackForm');
+            existingForms.forEach(function(form) {
+                form.remove();
+            });
+
+            // Clone the feedback form template
+            var template = document.getElementById('feedbackFormTemplate');
+            var clone = template.cloneNode(true);
+            clone.id = ''; // Clear the id
+            clone.className = 'feedbackForm'; // Add a class for future reference
+            clone.style.display = 'block';
+
+            // Append the cloned form to the event details
+            var details = document.getElementById(eventId);
+            details.appendChild(clone);
+        }
+
+        // Function to submit feedback for a specific event
+        function submitFeedback(event) {
+            event.preventDefault();
+            var formData = new FormData(event.target);
+            var rating = formData.get('rating');
+            var comment = formData.get('comment');
+
+            // Validate comment length
+            if (comment.length > 50) {
+                alert("Comment should not exceed 50 characters.");
+                return;
+            }
+
+            // You can handle sending this data to the server or admin email here
+            // For now, let's just show the success message
+            showMessage('Feedback submitted successfully!');
+            // Reset the form after submission
+            event.target.reset();
+        }
+
+        // Function to show message
+        function showMessage(message) {
+            var messageDiv = document.getElementById('message');
+            messageDiv.textContent = message;
+            messageDiv.style.display = 'block';
+            setTimeout(function() {
+                messageDiv.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centurion University Campus Pages</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #000000, #333333); /* Black to dark gray gradient background */
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .campus {
+    padding: 20px;
+    background-color: #ffffff; /* Default campus background color */
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  .pkd {
+    background-color: #ffcc00; /* PKD campus background color */
+  }
+  .bbsr {
+    background-color: #ff6666; /* BBSR campus background color */
+  }
+  .vzm {
+    background-color: #66ccff; /* VZM campus background color */
+  }
+  
+  .side-nav {
+    display: none; /* Initially hide the side navigation */
+    flex-direction: column;
+    align-items: center;
+    background-color: #333; /* Dark gray background for navigation bar */
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    z-index: 1;
+  }
+  .nav-item {
+    color: #fff; /* White text color */
+    text-decoration: none;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  .nav-icon {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  .tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff; /* White text color */
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .nav-item:hover .tooltip {
+    display: block;
+  }
+  .menu-bar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+  }
+ 
+</style>
+</head>
+<body>
+<div class="menu-bar" onclick="toggleSideNav()">
+  &#9776; <!-- Hamburger icon -->
+</div>
+
+<div class="side-nav" id="sideNav">
+  <!-- Home symbol linked to home page -->
+  <div class="nav-item">
+      <a href="home_page.html">
+          <span class="nav-icon">&#8962;</span> <!-- Home symbol -->
+          <span class="tooltip">Home</span>
+      </a>
+  </div>
+  <!-- Account symbol linked to account page -->
+  <div class="nav-item">
+    <a href="about.html">
+      <span class="nav-icon">&#128100;</span> <!-- Account symbol -->
+      <span class="tooltip">About</span>
+  </div>
+  <!-- Events List symbol linked to events page -->
+  <div class="nav-item">
+      <a href="events.html">
+          <span class="nav-icon">&#127881;</span> <!-- Events List symbol -->
+          <span class="tooltip">Events</span>
+      </a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="campus pkd" onclick="goToEvents('PKD')"> <!-- On click of PKD campus, call function goToEvents with parameter 'PKD' -->
+    <h2>PKD Campus</h2>
+  </div>
+  <div class="campus bbsr" onclick="goToEvents('BBSR')">
+    <!-- On click of BBSR campus, call function goToEvents with parameter 'BBSR' -->
+    <h2>BBSR Campus</h2>
+  </div>
+  <div class="campus vzm" onclick="goToEvents('VZM')"> <!-- On click of VZM campus, call function goToEvents with parameter 'VZM' -->    <h2>VZM Campus</h2>
+  </div>
+</div>
+
+<script>
+  function toggleSideNav() {
+    var sideNav = document.getElementById("sideNav");
+    if (sideNav.style.display === "none") {
+      sideNav.style.display = "flex";
+    } else {
+      sideNav.style.display = "none";
+    }
+  }
+
+  function goToEvents(campus) {
+    // Redirect to events page based on the selected campus
+    if (campus === 'PKD') {
+      window.location.href = 'events_pkd.html';
+    } else if (campus === 'BBSR') {
+      window.location.href = 'events_bbsr.html'; // Link to BBSR events page
+    } else if (campus === 'VZM') {
+      window.location.href = 'events_vzm.html';
+    }
+  }
+</script>
+
+</body>
+</html>

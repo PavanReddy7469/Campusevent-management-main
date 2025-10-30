@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000000, #333333); /* Black to dark grey gradient background */
+            color: #fff; /* White text color */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center align content */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu {
+            background-color: #333; /* Dark grey background for menu bar */
+            padding: 10px 0;
+        }
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .menu ul li a {
+            text-decoration: none;
+            color: #fff; /* White text color */
+            padding: 10px;
+            transition: background-color 0.3s ease; /* Smooth transition for background color */
+        }
+        .menu ul li a:hover {
+            background-color: #555; /* Darker background color on hover */
+        }
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .contact-form {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            box-sizing: border-box;
+        }
+        .contact-form:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Darken background on hover */
+        }
+        .contact-form input[type="text"]:hover,
+        .contact-form input[type="email"]:hover,
+        .contact-form textarea:hover {
+            background-color: #444; /* Darken input background on hover */
+        }
+        .contact-image {
+            width: 35%;
+            margin-top: 20px;
+        }
+        .contact-image img {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            opacity: 0.8; /* Adjust image opacity */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Add shadow effect */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Add transition effect */
+        }
+        .contact-image img:hover {
+            opacity: 1; /* Increase opacity on hover */
+            transform: scale(1.05); /* Scale up image on hover */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333; /* Dark grey background for input fields */
+            color: #fff; /* White text color */
+            transition: background-color 0.3s ease; /* Add transition effect */
+        }
+        .form-group input[type="text"]:hover,
+        .form-group input[type="email"]:hover,
+        .form-group textarea:hover {
+            background-color: #444; /* Darken input background on hover */
+        }
+        .form-group textarea {
+            height: 150px; /* Adjust the height as needed */
+        }
+        .form-group input[type="submit"] {
+            background-color: #007bff; /* Blue submit button */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Add transition effect */
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        #chat-widget {
+            margin-top: 20px;
+        }
+        /* Chatbot styles */
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        }
+        #chat-box {
+            margin-bottom: 10px;
+            overflow-y: auto;
+            max-height: 300px; /* Limit chat box height */
+        }
+        input[type="text"] {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333; /* Dark grey background */
+            color: #fff; /* White text color */
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff; /* Blue button */
+            color: #fff; /* White text color */
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .user-message {
+            text-align: right;
+        }
+        .chatbot-message {
+            text-align: left;
+        }
+        /* Center chatbot widget image */
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <a href="home_page.html">
+                <img src="./eventlogo.jpg" alt="Your Logo"class="logo" width="150" height="150">
+                
+            </a>
+        </div>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li><a href="home_page.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="signup.html">Signup</a></li>
+            </ul>
+        </div>
+        <h1>Contact Us</h1>
+        <div class="contact-content">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <form action="contact.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send Message">
+                    </div>
+                </form>
+            </div>
+            <!-- Image -->
+            <div class="contact-image">
+              <img src="./contact us image.webp" alt="Contact Us Image" width="550" height="400">
+          </div>
+        </div>
+    </div>
+    <!-- Chatbot Widget -->
+    <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align: center;">If you have any questions?</h3>
+    <div class="center">
+        <div class="contact-image">
+          <img src="./ai image(2).jpg" alt="AI Image" width="200" height="200">
+      </div>
+    </div>
+    <div id="chat-widget">
+        <div id="chat-container">
+            <div id="chat-box"></div>
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot responses (replace with your AI logic)
+        const responses = {
+            "hi": "Hello! How can I help you?",
+            "how are you": "I'm just a chatbot, but thank you for asking!",
+            "what is your name": "I'm just a chatbot, I don't have a name.",
+            "bye": "Goodbye! Have a great day!",
+            "what is event management?":"the process of creating and maintaining an event",
+            "what is the purpose of this event management website?":"the main purpose is shown upcoming and completed events",
+            "what kind of activities are there in event?":"actually! in centurion so many clubs are there like movies,singing,dancing,fashion,desginer etc those who are intrested for these clubs they can join"
+        };
+
+        // Function to send user message and get response
+        function sendMessage() {
+            const userInput = document.getElementById("user-input").value;
+            const chatBox = document.getElementById("chat-box");
+
+            // Display user message
+            chatBox.innerHTML += `<div class="message user-message">You: ${userInput}</div>`;
+
+            // Get response from chatbot
+            const response = responses[userInput.toLowerCase()] || "I'm sorry, I didn't understand that.";
+            
+            // Display chatbot response
+            chatBox.innerHTML += `<div class="message chatbot-message">Chatbot: ${response}</div>`;
+
+            // Clear user input
+            document.getElementById("user-input").value = "";
+
+            // Scroll to the bottom of chat box
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>

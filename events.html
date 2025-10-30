@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000000, #333333); /* Black to dark grey gradient background */
+            color: #fff; /* White text color */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center align content */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Button styles */
+        .view-more-btn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Smooth transition for background color change */
+        }
+
+        .view-more-btn:hover {
+            background-color: #008CBA; /* Darker blue */
+        }
+
+        .events-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .event {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            cursor: pointer; /* Add cursor pointer */
+        }
+        .event:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Darken background on hover */
+        }
+        .event-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-decoration: underline; /* Underline title */
+            cursor: pointer; /* Add cursor pointer */
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+
+        .event-title:hover {
+            color: #ffcc00; /* Change text color on hover */
+        }
+
+        .event-location {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .event-description {
+            font-size: 16px;
+        }
+        /* Search bar styles */
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #fff; /* White background */
+            color: #333; /* Dark text color */
+            font-size: 16px;
+            outline: none; /* Remove outline */
+        }
+        /* Social icons styles */
+        .social-icons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #fff; /* White color */
+            font-size: 24px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .social-icons a:hover {
+            opacity: 0.7;
+        }
+        /* Links styles */
+        .social-icons a.small {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Events</h1>
+        <!-- Search bar -->
+        <input type="text" id="searchInput" placeholder="Search events...">
+        <div class="events-container" id="eventsContainer">
+            <!-- Event items will be dynamically added here -->
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/cutmap_galaxy?igsh=MWZwejZvY3ZiNmt1Zw==" target="_blank"><i class="fab fa-instagram"></i></a> <!-- Instagram icon -->
+        <a href="https://www.youtube.com/@centurionamigos6266" target="_blank"><i class="fab fa-youtube"></i></a> <!-- YouTube icon -->
+        <a href="https://www.linkedin.com/school/centurion-university-of-technology-and-management/" target="_blank"><i class="fab fa-linkedin"></i></a> <!-- LinkedIn icon -->
+    </div>
+
+    <div class="container">
+        <div class="social-icons">
+            <a href="about.html" class="small"><i class="fas fa-info-circle"></i> About</a>
+            <a href="home_page.html" class="small"><i class="fas fa-home"></i> Home</a>
+            <a href="contact_us.html" class="small"><i class="fas fa-envelope"></i> Contact Us</a>
+        </div>
+        </div>
+        <script>
+            // Event data (replace with your actual event data)
+            const events = [
+                { title: "Gajajyothi 2024", location: "VZM Campus", description: "It is most awaited & popular college festival ", href: "https://gajajyoti.cutmap.ac.in/" },
+                { title: "Estart Start Up Boot Camp in Association", location: "BBSR Campus", description: "Create awareness among the students as well as to kindle the spirit of innovation and entrepreneurship.", href: "https://centurionuniv.edu.in/event-calender/estart-start-up-boot-camp-in-association-with-start-up-odisha/" },
+                { title: "Webinar On Game Development with AR-VR", location: "BBSR Campus", description: "Technology for almost everything, the recent trend towards greener.", href: "https://centurionuniv.edu.in/event-calender/webinar-on-game-development-with-ar-vr/" },
+                { title: "Cryptocurrency", location: "VZM", description: "security and operate independently of a central authority.", href: "https://campustocrypto.com/" },
+                { title: "Cryptocurrency", location: "BBSR", description: "security and operate independently of a central authority.", href: "https://campustocrypto.com/" },
+                { title: "Cryptocurrency", location: "PKD", description: "security and operate independently of a central authority.", href: "https://campustocrypto.com/" },
+                { title: "Agri-Business Entrepreneurship", location: "BBSR", description: "focuses on the food and agribusiness sector, emphasizing business and economic analysis.", href: "https://centurionuniv.edu.in/event-calender/agri-business-entrepreneurship/" },
+                { title: "The Art and Craft  of Writing", location: "PKD", description: "Creative writing, Clarity, Transparency, and Authenticity..", href: "https://centurionuniv.edu.in/event-calender/the-art-and-craft-of-writing/" },
+                { title: "Vanijya Niti", location: "BBSR", description: "Virtual Business Plan Competition.", href: "https://centurionuniv.edu.in/event-calender/vanijya-niti/" },
+                { title: "Science Exhibition", location: "BBSR", description: "scientific attitude by fostering curiosity, critical thinking, and problem-solving skills..", href: "https://centurionuniv.edu.in/event-calender/science-exhibition/" },
+                { title: "Gajajyoti 2020", location: "PKD", description: "It is most awaited & popular college festival.", href: "https://centurionuniv.edu.in/event-calender/gajajyoti-2020-pkd/" },
+                { title: "Gajajajyoti 2020", location: "BBSR", description: "It is most awaited & popular college festival.", href: "https://centurionuniv.edu.in/event-calender/gajajyoti-2020-bbsr/" },
+                { title: "Webinar on Investor Awareness", location: "PKD", description: "immensely beneficial for various stakeholders, including individuals, businesses, and the community at large.", href: "https://centurionuniv.edu.in/event-calender/webinar-on-investor-awareness/" },
+                { title: "Webinar 02_Smart Agriculture", location: "BBSR", description: "The adoption of advanced technologies and data-driven practices in agricultural production.", href: "https://centurionuniv.edu.in/event-calender/webinar-02_smart-agriculture/" },
+                { title: "IELTS", location: "BBSR", description: "Ability of non-native English speakers who plan to study, work, or migrate to English-speaking countries.", href: "https://centurionuniv.edu.in/event-calender/ielts/" }
+            ];
+        
+            // Function to display events
+            function displayEvents(events) {
+                const eventsContainer = document.getElementById('eventsContainer');
+                eventsContainer.innerHTML = ''; // Clear previous content
+        
+                // Loop through events and create event elements
+                events.forEach(event => {
+                    const eventHtml = `
+                        <div class="event">
+                            <div class="event-title">${event.title}</div>
+                            <div class="event-location">Location: ${event.location}</div>
+                            <div class="event-description">${event.description}</div>
+                            <button onclick="window.open('${event.href}', '_blank')" class="view-more-btn">View More</button>
+                        </div>
+                    `;
+                    eventsContainer.innerHTML += eventHtml;
+                });
+            }
+        
+            // Function to filter events based on search input
+            function filterEvents() {
+                const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                const filteredEvents = events.filter(event => 
+                    event.title.toLowerCase().includes(searchInput) || event.location.toLowerCase().includes(searchInput));
+                displayEvents(filteredEvents);
+            }
+            function filterEvents() {
+                const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                const filteredEvents = events.filter(event => 
+                    event.location.toLowerCase().includes(searchInput) || event.title.toLowerCase().includes(searchInput));
+                displayEvents(filteredEvents);
+            }
+        
+            // Initial display of all events
+            displayEvents(events);
+        
+            // Event listener for search input
+            document.getElementById('searchInput').addEventListener('input', filterEvents);
+        </script>
+</body>
+</html>        

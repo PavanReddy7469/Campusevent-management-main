@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000000; /* Black background */
+      color: #fff; /* White text color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 50%;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #000000, #333333); /* Gradient from black to dark grey */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h3 {
+      text-align: center;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button[type="signup"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #007bff; /* Blue background for button */
+      color: #fff; /* White text color */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+    button[type="signup"]:hover {
+      background-color: #333333; /* Darker background on hover */
+    }
+    .center-text {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form onsubmit="sendEmail(); reset(); return false;">
+      <h3>Signup</h3>
+      <input type="text" id="First Name" placeholder="First Name" required>
+      <input type="text" id="Last Name" placeholder="Last Name" required>
+      <input type="email" id="email" placeholder="Email id" required>
+      <input type="text" id="Password" placeholder="password" required>
+      <button type="signup">Submit</button>
+    </form>
+  </div>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    function sendEmail(){
+      Email.send({
+        secureToken:" b78022a6-0bb2-464e-b91e-6d3aa9c6d389",
+        To: "poojariharshi3623@gmail.com",
+        From: document.getElementById("email").value,
+        Subject: "New contact Form Enquiry",
+        Body: "First Name: " + document.getElementById("First Name").value + "<br> Last Name: " + document.getElementById("Last Name").value 
+          + "<br> Email: " + document.getElementById("email").value + "<br> password: " + document.getElementById("password").value
+      }).then(
+        message => alert("Message Sent Successfully")
+      );
+    }
+  </script>
+</body>
+</html>
