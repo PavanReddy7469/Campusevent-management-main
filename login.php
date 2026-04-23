@@ -1,40 +1,41 @@
 <?php
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["LastName"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    // Database connection parameters
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $dbname = "signuppage";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Prepare SQL statement to insert data into a table (assuming the table is named 'users')
-    $sql = "INSERT INTO users (firstName, LastName, email, password)
-            VALUES ('$firstName', '$lastName', '$email', '$password')";
-
-    // Execute SQL statement
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-   
-    header('Location: select_campus.html');
-
-    // Close connection
-    $conn->close();
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: login.html");
+    exit;
 }
+
+$usernameInput = $_POST["username"] ?? "";
+$passwordInput = $_POST["password"] ?? "";
+
+if ($usernameInput === "" || $passwordInput === "") {
+    echo "Please provide both username/email and password.";
+    exit;
+}
+
+$servername = "127.0.0.1";
+$dbUsername = "root";
+$dbPassword = "";
+$dbname = "signuppage";
+
+$conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$stmt = $conn->prepare("SELECT password FROM users WHERE email = ? OR firstName = ? LIMIT 1");
+$stmt->bind_param("ss", $usernameInput, $usernameInput);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result ? $result->fetch_assoc() : null;
+
+if ($user && isset($user["password"]) && password_verify($passwordInput, $user["password"])) {
+    $stmt->close();
+    $conn->close();
+    header("Location: select_campus.html");
+    exit;
+}
+
+$stmt->close();
+$conn->close();
+echo "Invalid credentials. <a href='login.html'>Try again</a>.";
 ?>
